@@ -18,9 +18,10 @@ class _StateManagementDemoState extends State<StateManagementDemo> {
     Colors.grey,
     ];
   
-  int colorIndex = 0;
+  // int colorIndex = 0;
+  final colorIndexNotifier = ValueNotifier(0);
 
-  int textIndex = 0;
+  final numberNotifier = ValueNotifier<int>(1);
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +34,21 @@ class _StateManagementDemoState extends State<StateManagementDemo> {
               const SizedBox(height: 20),
               Stack(
                 children: [
-                  Container(
-                    color: colors[colorIndex],
-                    width: 200,
-                    height: 200,  
-                    child: Center(child: Text("$textIndex", style: TextStyle(fontSize: 50),)),
+                  ValueListenableBuilder(
+                    valueListenable: colorIndexNotifier,
+                    builder: (context, colorIndex, child) {
+                      return Container(
+                        color: colors[colorIndex],
+                        width: 200,
+                        height: 200,  
+                        child: Center(child: ValueListenableBuilder(
+                          valueListenable: numberNotifier,
+                          builder: (context, number, child) {
+                            return Text("$number", style: TextStyle(fontSize: 50),);
+                          }
+                        )),
+                      );
+                    }
                   ),
                 ],
               ),
@@ -54,15 +65,11 @@ class _StateManagementDemoState extends State<StateManagementDemo> {
     }
 
     void ChangeColor() {
-      setState(() {
-        colorIndex++;
-        colorIndex = colorIndex % colors.length;
-      });
+      colorIndexNotifier.value++;
+      colorIndexNotifier.value = colorIndexNotifier.value % colors.length;
     }
 
     void ChangeText() {
-      setState(() {
-        textIndex++;
-      });
+      numberNotifier.value++;
     }
 }
