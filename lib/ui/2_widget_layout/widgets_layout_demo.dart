@@ -9,7 +9,7 @@ class WidgetsLayoutDemo extends StatelessWidget {
       appBar: AppBar(title: Text('Widgets and Layout')),
       body: SingleChildScrollView(
         child: Center(
-          child: Column(children: [
+          child: Column(children: [ 
           Text('Hello'),
           Text('World'), 
           Text('and MIU'),
