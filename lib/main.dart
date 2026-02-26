@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/ui/2_widget_layout/widgets_layout_demo.dart';
+import 'package:flutter_demo/ui/3_state_management/state_management_demo.dart';
 import 'ui/1_dart/dart_demo_screen.dart';
 
 void main() {
@@ -51,6 +52,19 @@ class HomeScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const WidgetsLayoutDemo(),
+                ),
+              );
+            },
+          ),
+
+          ListTile(
+            title: const Text("3. State Management"),
+            leading: const Icon(Icons.code),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const StateManagementDemo(),
                 ),
               );
             },

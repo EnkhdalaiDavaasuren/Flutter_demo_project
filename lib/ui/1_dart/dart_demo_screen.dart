@@ -14,7 +14,7 @@ class DartDemoScreen extends StatelessWidget {
       body: Center(
         // SingleChildScrollView ensures the content scrolls if the screen is too small
         child: SingleChildScrollView(
-          child: Row(
+          child: Column(
             // MainAxisSize.min ensures the column only takes up needed space
             // so the Center widget can do its job vertically
             mainAxisSize: MainAxisSize.min,
