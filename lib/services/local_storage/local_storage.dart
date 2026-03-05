@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:flutter/src/material/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorage {
