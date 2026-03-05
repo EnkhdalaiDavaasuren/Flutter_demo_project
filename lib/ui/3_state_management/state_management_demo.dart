@@ -11,45 +11,51 @@ class StateManagementDemo extends StatefulWidget {
 class _StateManagementDemoState extends State<StateManagementDemo> {
   final manager = StateManagementManager();
 
+  @override
+  void initState() {
+    super.initState();
+    manager.init();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Widgets and Layout')),
+      appBar: AppBar(title: Text('State Management')),
       body: Center(
-        child: Center(
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              Stack(
-                children: [
-                  ValueListenableBuilder<Color>(
-                    valueListenable: manager.colorNotifier,
-                    builder: (context, color, child) {
-                      return Container(
-                        color: color,
-                        width: 200,
-                        height: 200,  
-                        child: Center(child: ValueListenableBuilder(
-                          valueListenable: manager.numberNotifier,
-                          builder: (context, number, child) {
-                            return Text("$number", style: TextStyle(fontSize: 50),);
-                          }
-                        )),
-                      );
-                    }
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            ValueListenableBuilder<Color>(
+              valueListenable: manager.colorNotifier,
+              builder: (context, color, child) {
+                return Container(
+                  color: color,
+                  width: 200,
+                  height: 200,
+                  child: Center(
+                    child: ValueListenableBuilder(
+                      valueListenable: manager.numberNotifier,
+                      builder: (context, value, child) {
+                        return Text('$value', style: TextStyle(fontSize: 50));
+                      },
+                    ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              OutlinedButton(onPressed: manager.ChangeColor, child: Text("Change Color")),
-              const SizedBox(height: 20),
-              OutlinedButton(onPressed: manager.ChangeText, child: Text("Change Text")),
-              const SizedBox(height: 20),
-            ],
-          ),
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+            OutlinedButton(
+              onPressed: manager.changeColor,
+              child: Text('Change color'),
+            ),
+            const SizedBox(height: 20),
+            OutlinedButton(
+              onPressed: manager.changeText,
+              child: Text('Change text'),
+            ),
+          ],
         ),
       ),
-      );
-    }
+    );
+  }
 }

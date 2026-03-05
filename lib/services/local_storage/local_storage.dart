@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/src/material/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorage {
@@ -19,5 +20,14 @@ class LocalStorage {
 
   int getNumber() {
     return prefs.getInt(_numberKey) ?? 0;
+  }
+
+  Future<void> setColor(Color color) async {
+    final ColorInt = color.toARGB32();
+    await prefs.setInt(_colorKey, ColorInt);
+  }
+
+  Future<void> setNumber(int value) async {
+    await prefs.setInt(_numberKey, value);
   }
 }

@@ -29,9 +29,12 @@ class StateManagementManager {
     _colorIndex = _colorIndex % _colors.length;
     final color = _colors[_colorIndex];
     colorNotifier.value = color;
+    localStorage.setColor(color);
   }
 
   void changeText() {
     numberNotifier.value++;
+    final number = numberNotifier.value;
+    localStorage.setNumber(number);
   }
 }
