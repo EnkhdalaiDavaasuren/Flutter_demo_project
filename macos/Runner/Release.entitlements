@@ -4,7 +4,10 @@
 <dict>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
+<<<<<<< HEAD
 	<key>com.apple.security.network.client</key>
     <true/>
+=======
+>>>>>>> 566f0118a844bda7b692fedd9ac2250effadfb58
 </dict>
 </plist>
